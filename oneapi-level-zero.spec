@@ -20,8 +20,8 @@ Source:         %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 
 ExclusiveArch:  x86_64
 
-BuildRequires:  gcc-c++
-BuildRequires:  cmake
+BuildRequires:  cmake3
+BuildRequires:  devtoolset-9-gcc-c++
 BuildRequires:  make
 BuildRequires:  opencl-headers
 
@@ -45,11 +45,12 @@ developing applications that use %{name}.
 %autosetup -n %{srcname}-%{version}
 
 %build
-%cmake
-%cmake_build
+. /opt/rh/devtoolset-9/enable
+%cmake3
+%cmake3_build
 
 %install
-%cmake_install
+%cmake3_install
 
 %files
 %license LICENSE
